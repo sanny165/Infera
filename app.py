@@ -844,11 +844,14 @@ with st.container(border=True):
         help="PDF, PNG, JPG or JPEG — including scanned documents.",
     )
     
+    lang_options = list(SUPPORTED_LANGUAGES.keys())
+    default_idx = lang_options.index("hin+eng") if "hin+eng" in lang_options else 0
+
     ocr_lang_code = st.selectbox(
-        "Document Language (for OCR)",
-        options=list(SUPPORTED_LANGUAGES.keys()),
+        label="Document Language (for OCR)",
+        options=lang_options,
+        index=default_idx,
         format_func=lambda code: SUPPORTED_LANGUAGES[code],
-        index=5,  # Defaults to "Hindi + English"
         help="Select the predominant language in the document/image to improve OCR accuracy."
     )
     
