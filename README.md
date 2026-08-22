@@ -1,9 +1,7 @@
 # Infera
 
 **AI-Powered Document Summary Assistant** — upload a PDF or image (including
-scanned documents, in multiple languages), and get a content-proportional
-summary, key points, main ideas, improvement suggestions, and a
-document-grounded Q&A chat, all backed by a real RAG pipeline.
+scanned documents, in multiple languages), generate summaries, key points, main ideas, improvement suggestions, and document-grounded Q&A using RAG.
 
 
 🔗 **Live app:** https://inferagit-6kgh3se5gka3wubfvwepgk.streamlit.app/
@@ -12,11 +10,9 @@ document-grounded Q&A chat, all backed by a real RAG pipeline.
 
 ## 1. Problem Statement
 
-Reading and digesting long documents — research papers, reports, scanned
-forms — takes time. This app automates that: it extracts a document's content
-(even from scans, via OCR), indexes it semantically, and uses an LLM to
-produce grounded summaries, extracted key information, and answers to
-follow-up questions — without hallucinating content that isn't in the source.
+Reading and understanding long or scanned documents can be time-consuming.
+Infera automates document extraction, summarization, and question answering
+using OCR, semantic search, RAG, and LLMs.
 
 ## 2. Features
 
@@ -31,6 +27,13 @@ follow-up questions — without hallucinating content that isn't in the source.
 - ⬇️ Export Options: Downloadable summary reports in text format.
 - 📱 Mobile-First UX: Responsive layout, stacked control inputs, collapsible full-text view, clear loading states, and custom CSS breakpoints.
 - Clean error handling and visible pipeline loading states
+
+
+
+
+## 🖥️ Infera in Action
+
+<img src="assets/screenshots/Infera.png" width="90%" alt="Infera Application">
 
 ## 3. Architecture
 
@@ -75,17 +78,16 @@ Streamlit UI
 
 ## 5. RAG Workflow
 
-**Indexing:** Document → Extract Text → Chunk Text → Generate Embeddings → FAISS
-**Retrieval:** Question → Query Embedding → FAISS Similarity Search → Top-K
-Relevant Chunks → Context → (Context + Question) → Groq → Grounded Response
+**Indexing:**  
+Document → Extract → Chunk → Embed → FAISS
+
+**Retrieval:**  
+Question → Similarity Search → Relevant Chunks → Groq LLM → Grounded Answer
 
 ## 6. Language Support (Multilingual OCR)
 
-Scanned pages and images are OCR'd with Tesseract using a **language you
-pick per document** in the UI, rather than one fixed model loaded with every
-language at once. Loading every language simultaneously causes cross-script
-confusion (e.g. Hindi characters misread as Tamil, Telugu, or Bengali); a
-targeted model avoids that and improves accuracy.
+For scanned documents and images, users select the document language so
+Tesseract uses the appropriate trained language model.
 
 | Language | Code | Language | Code |
 |---|---|---|---|
@@ -97,41 +99,8 @@ targeted model avoids that and improves accuracy.
 
 Digitally generated PDFs bypass OCR completely as text is parsed directly via PyMuPDF.
 
-## 7. Project Structure
 
-
-```
-Infera/
-├── app.py
-├── config.py
-├── utils/
-│   ├── pdf_extractor.py
-│   ├── ocr.py
-│   ├── text_processor.py
-│   ├── embeddings.py
-│   ├── vector_store.py
-│   ├── rag.py
-│   ├── summarizer.py
-│   └── groq_client.py
-├── prompts/
-│   ├── summary_prompt.txt
-│   ├── key_points_prompt.txt
-│   ├── main_ideas_prompt.txt
-│   └── improvement_prompt.txt
-├── sample_documents/
-├── assets/screenshots/
-├── requirements.txt
-├── packages.txt
-├── .env.example
-├── .streamlit/
-│   ├── config.toml
-│   └── secrets.toml.example
-├── .gitignore
-├── LICENSE
-└── README.md
-```
-
-## 8. Installation (Local)
+## 7. Installation (Local)
 
 **Prerequisites:** Python 3.10+ and the Tesseract OCR engine installed at the
 system level 
@@ -155,7 +124,7 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## 9. Environment Setup
+## 8. Environment Setup
 
 1. Copy `.env.example` to `.env`:
    
@@ -169,7 +138,7 @@ pip install -r requirements.txt
    GROQ_API_KEY=gsk_your_real_key_here
    ```
 
-## 10. Usage (Local)
+## 9. Usage (Local)
 
 ```bash
 streamlit run app.py
@@ -179,11 +148,9 @@ Then open the URL Streamlit prints (usually `http://localhost:8501`), upload
 a PDF or image, pick a summary detail level and document language, and click
 **Analyze Document**.
 
-## 11. Deployment (Streamlit Community Cloud)
+## 10. Deployment (Streamlit Community Cloud)
 
-> Streamlit Community Cloud is utilized because the backend requires a persistent Python environment to execute PyMuPDF, Sentence-Transformers, FAISS, and system-level OCR package management (packages.txt).
-
-1. Push this project to a **public GitHub repository** (ensure .env is ignored).
+1. Push this project to a **public GitHub repository**.
 2. Create a **New app** at share.streamlit.io.
 3. Connect your repository and set the main file path to app.py
 4. In Settings → Secrets, paste your production keys in TOML format:
@@ -193,16 +160,16 @@ a PDF or image, pick a summary detail level and document language, and click
    GROQ_MODEL = "openai/gpt-oss-120b"
    EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
    ```
-5. Deploy. Streamlit Cloud automatically installs Python packages from `requirements.txt`. System dependencies listed in packages.txt (tesseract-ocr-hin, tesseract-ocr-tel, etc.) will automatically install on deployment.
+5. Deploy.
 
-## 12. Limitations
+## 11. Limitations
 
 - Session Scope: Operates on single-document sessions without multi-document cross-referencing.
 - Scan Dependability: OCR accuracy is contingent on source image quality and clarity.
 - Manual Language Selection: Requires selecting the target script manually for OCR processing.
 - Layout Parsing: Extracts running text and page continuity; does not reconstruct visual layout matrices, complex columns, or tables.
 
-## 13. Future Improvements
+## 12. Future Improvements
 
 - Multi-document knowledge bases with cross-document Q&A
 - Persistent chat history per document
@@ -210,7 +177,7 @@ a PDF or image, pick a summary detail level and document language, and click
 - Streaming LLM responses in the UI
 - Automated language identification for incoming scanned pages.
 
-## 14. Summary
+## 13. Summary
 
 Infera ingests a PDF or image and extracts its text using PyMuPDF for
 digital PDFs or Tesseract OCR for scanned pages, automatically detecting
