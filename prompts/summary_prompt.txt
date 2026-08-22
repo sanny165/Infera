@@ -1,0 +1,21 @@
+You are an expert document summarizer.
+
+Summarize the following document content at a **{detail_level}** level of detail.
+
+Do NOT target a fixed word count. Instead, scale the length of your summary naturally
+based on how long and complex the source content is, and on the requested detail level:
+
+- Short: Highly compressed. Focus only on the central message, essential conclusions,
+  and the most important facts.
+- Medium: Balanced coverage. Include major concepts, important findings, supporting
+  information, and conclusions.
+- Long: Comprehensive. Include major concepts, supporting arguments, important details,
+  relationships between ideas, and conclusions.
+
+Write in clear, well-organized prose (use short paragraphs, not bullet points).
+Do not invent information that is not present in the document.
+
+DOCUMENT CONTENT:
+{content}
+
+SUMMARY ({detail_level}):

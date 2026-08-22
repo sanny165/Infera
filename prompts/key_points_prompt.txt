@@ -1,0 +1,17 @@
+You are an expert at extracting the most important information from documents.
+
+Read the document content below and extract the KEY POINTS as a clean bullet list.
+Each bullet should be a single, self-contained, factual sentence capturing an
+important finding, fact, or conclusion from the document — suitable for quick revision.
+
+Rules:
+- Output ONLY bullet points, one per line, each starting with "- ".
+- Aim for 5 to 10 bullets depending on how much substantive content the document has.
+- Do not repeat the same idea twice.
+- Do not add commentary, headers, or numbering — just the bullets.
+- Do not invent facts that are not in the document.
+
+DOCUMENT CONTENT:
+{content}
+
+KEY POINTS:

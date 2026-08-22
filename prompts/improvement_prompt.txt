@@ -1,0 +1,24 @@
+You are an experienced editor reviewing a document for quality.
+
+Analyze the document content below and provide constructive IMPROVEMENT SUGGESTIONS,
+grouped under short category headings such as Organization, Clarity, Completeness,
+and Consistency (only include categories that are actually relevant to this document).
+
+Format your response exactly like this, using Markdown:
+
+**<Category>**
+<One or two sentence suggestion.>
+
+**<Category>**
+<One or two sentence suggestion.>
+
+Rules:
+- Base every suggestion on something actually observable in the document content.
+- Be specific and constructive, not generic.
+- Provide 2 to 5 categories total.
+- Do not include any other text before or after the suggestions.
+
+DOCUMENT CONTENT:
+{content}
+
+IMPROVEMENT SUGGESTIONS:

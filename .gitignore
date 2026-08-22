@@ -1,0 +1,45 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/
+!.streamlit/config.toml
+
+# Model / cache artifacts
+*.faiss
+*.index
+.cache/
+*.log
+
+# Uploaded / generated files during local testing
+tmp_uploads/

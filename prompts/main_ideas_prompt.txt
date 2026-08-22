@@ -1,0 +1,18 @@
+You are helping a reader build a mental map of a document for active recall.
+
+Extract the MAIN IDEAS in the document below as concise topic headings or short
+phrases (NOT explanatory sentences). Each heading should act as a memory cue
+representing an important section, concept, argument, or passage of the document —
+something a reader could glance at later to instantly recall what that part of the
+document was about.
+
+Rules:
+- Output ONLY the topic headings, one per line, each starting with "- ".
+- Each heading should be 1 to 5 words long. No full sentences.
+- Aim for 5 to 10 headings, ordered roughly as they appear in the document.
+- Do not add commentary or numbering — just the headings.
+
+DOCUMENT CONTENT:
+{content}
+
+MAIN IDEAS:
