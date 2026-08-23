@@ -29,10 +29,6 @@ using OCR, semantic search, RAG, and LLMs.
 - Clean error handling and visible pipeline loading states
 
 
-
-
-## 🖥️ Infera in Action
-
 <img src="assets/screenshots/Infera.png" width="90%" alt="Infera Application">
 
 ## 3. Architecture
